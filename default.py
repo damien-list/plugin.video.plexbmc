@@ -1623,8 +1623,9 @@ def getAudioSubtitlesMedia( server, id ):
                 try:
                     if stream['key']:
                         printDebug( "Found external subtitles id : " + str(stream['id']))
-                        external=stream
-                        external['key']='http://'+server+external['key']
+                        if stream['selected'] == "1":
+                            external=stream
+                            external['key']='http://'+server+external['key']
                 except:
                     #Otherwise it's probably embedded
                     try:
